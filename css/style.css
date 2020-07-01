@@ -11,6 +11,7 @@ Dark green: #28b485
     padding: 0;
     box-sizing: border-box;
 }
+
 body { /* All the modifications related to fonts that shouls apply globally should go in the "body" selector, as it is the parent of all font elements. */
     font-family: "Lato", sans-serif;
     font-weight: 400;
@@ -32,11 +33,39 @@ body { /* All the modifications related to fonts that shouls apply globally shou
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     position: relative;
 }
+
 .logo-box {
     position: absolute; /* Absolute makes reference to the ancestor, and will start counting pixels from there. */
     top: 40px; /* This wil start to count from the parent element which has a position equal to "relative". */
     left: 40px;
 }
+
 .logo {
     height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    top: 40%; /* This is in relation to the parent element. */
+    left: 50%; /* This is in relation to the parent element. */
+    transform: translate(-50%, -50%); /* This is in relation to the element irself, not to the parent element, thanks to the transform. */
+}
+
+.heading-primary {
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block; /* Block, so the element can take the full width of the viewport. */
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block; /* Block, so the element can take the full width of the viewport. */
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
 }
