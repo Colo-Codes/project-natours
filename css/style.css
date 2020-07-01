@@ -49,6 +49,7 @@ body { /* All the modifications related to fonts that shouls apply globally shou
     top: 40%; /* This is in relation to the parent element. */
     left: 50%; /* This is in relation to the parent element. */
     transform: translate(-50%, -50%); /* This is in relation to the element irself, not to the parent element, thanks to the transform. */
+    text-align: center; /* This will apply to the button. As the button is an inline element, it's treated as is where text, hence we can use this property. */
 }
 
 .heading-primary {
@@ -56,6 +57,7 @@ body { /* All the modifications related to fonts that shouls apply globally shou
     text-transform: uppercase;
     /* Animation related */
     backface-visibility: hidden; /* To prevent the element from moving vertically on animations (this happens sometimes). */
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -109,4 +111,29 @@ body { /* All the modifications related to fonts that shouls apply globally shou
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; /* This is in order the padding to work properly. */
+    border-radius: 100px;
+    transition: all .2s; /* Defines the transition between two states of an element. */
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* The button will move up on mouse hover. */
+    box-shadow: 0 10px 20px rgba(0,0,0,.5);
+}
+
+.btn:active { /* On click */
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+}
+
+.btn-white {
+    background-color: #FFF;
+    color: #777;
 }
