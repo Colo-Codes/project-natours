@@ -25,8 +25,8 @@ body { /* All the modifications related to fonts that shouls apply globally shou
     height: 95vh; /* At any point, the height of this element should be 95% of the viewport (the browser window size) */
     background-image:  linear-gradient(
         to right bottom,
-        rgba(126, 213, 111, 0.70),
-        rgba(40, 180, 133, 0.70)), 
+        rgba(126,213,111,0.70),
+        rgba(40,180,133,0.70)), 
         url(../img/hero.jpg);
     background-size: cover;
     background-position: top; /* This ensures the top of the image will remain at the top of the viewport. */
@@ -113,6 +113,17 @@ body { /* All the modifications related to fonts that shouls apply globally shou
     }
 }
 
+@keyframes moveInBottom {
+    0% { /* Start */
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% { /* Finish */
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .btn:link,
 .btn:visited {
     text-transform: uppercase;
@@ -121,6 +132,7 @@ body { /* All the modifications related to fonts that shouls apply globally shou
     display: inline-block; /* This is in order the padding to work properly. */
     border-radius: 100px;
     transition: all .2s; /* Defines the transition between two states of an element. */
+    position: relative; /* In order for the "absolute" positioning of the ".btn::after" to work. */
 }
 
 .btn:hover {
@@ -136,4 +148,33 @@ body { /* All the modifications related to fonts that shouls apply globally shou
 .btn-white {
     background-color: #FFF;
     color: #777;
+}
+
+.btn::after { /* Represents a styleable child pseudo-element immediately after the originating element’s actual content. */
+    content: ""; /* Needed for the element to be displayed. */
+    display: inline-block; /* Needed for the element to be displayed. */
+    height: 100%; /* This is a child of the button that has 100% height, so it matches its parent's height: the button. */
+    width: 100%;
+    border-radius: 100px;
+    position: absolute; /* Looks for the reference positioning of the button ".btn". */
+    top: 0;
+    left: 0;
+    z-index: -1; /* For a positioned box, the 'z-index' property specifies the stack level of the box in the current stacking context and whether the box establishes a local stacking context. */
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #FFF;
+    /* background-color: #f00; */
+}
+
+.btn-white:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    /* Animation */
+    animation: moveInBottom .5s ease-out .75s; /* The last value is the delay. */
+    animation-fill-mode: backwards;
 }
