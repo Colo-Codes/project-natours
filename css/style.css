@@ -1,0 +1,42 @@
+/*
+COLORS:
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+*/
+
+/* Initial reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body { /* All the modifications related to fonts that shouls apply globally should go in the "body" selector, as it is the parent of all font elements. */
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh; /* At any point, the height of this element should be 95% of the viewport (the browser window size) */
+    background-image:  linear-gradient(
+        to right bottom,
+        rgba(126, 213, 111, 0.70),
+        rgba(40, 180, 133, 0.70)), 
+        url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top; /* This ensures the top of the image will remain at the top of the viewport. */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    position: relative;
+}
+.logo-box {
+    position: absolute; /* Absolute makes reference to the ancestor, and will start counting pixels from there. */
+    top: 40px; /* This wil start to count from the parent element which has a position equal to "relative". */
+    left: 40px;
+}
+.logo {
+    height: 35px;
+}
