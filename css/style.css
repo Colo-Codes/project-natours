@@ -31,27 +31,24 @@ body {
   /* This ensures the top of the image will remain at the top of the viewport. */
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative; }
-
-.header__logo-box {
-  position: absolute;
-  /* Absolute makes reference to the ancestor, and will start counting pixels from there. */
-  top: 4rem;
-  /* This wil start to count from the parent element which has a position equal to "relative". */
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  /* This is in relation to the parent element. */
-  left: 50%;
-  /* This is in relation to the parent element. */
-  transform: translate(-50%, -50%);
-  /* This is in relation to the element irself, not to the parent element, thanks to the transform. */
-  text-align: center;
-  /* This will apply to the button. As the button is an inline element, it's treated as is where text, hence we can use this property. */ }
+  .header__logo-box {
+    position: absolute;
+    /* Absolute makes reference to the ancestor, and will start counting pixels from there. */
+    top: 4rem;
+    /* This wil start to count from the parent element which has a position equal to "relative". */
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    /* This is in relation to the parent element. */
+    left: 50%;
+    /* This is in relation to the parent element. */
+    transform: translate(-50%, -50%);
+    /* This is in relation to the element irself, not to the parent element, thanks to the transform. */
+    text-align: center;
+    /* This will apply to the button. As the button is an inline element, it's treated as is where text, hence we can use this property. */ }
 
 .heading-primary {
   color: #fff;
@@ -60,31 +57,29 @@ body {
   backface-visibility: hidden;
   /* To prevent the element from moving vertically on animations (this happens sometimes). */
   margin-bottom: 6rem; }
-
-.heading-primary--main {
-  display: block;
-  /* Block, so the element can take the full width of the viewport. */
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  /* Animation */
-  animation: moveInLeft 1s ease-out;
-  /* Short-hand version */
-  /* 
-    animation-delay: 3s;
-    animation-iteration-count: 3; How many times the animation will be repeated
-    */ }
-
-.heading-primary--sub {
-  display: block;
-  /* Block, so the element can take the full width of the viewport. */
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.74rem;
-  /* Animation */
-  animation-name: moveInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
+  .heading-primary--main {
+    display: block;
+    /* Block, so the element can take the full width of the viewport. */
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /* Animation */
+    animation: moveInLeft 1s ease-out;
+    /* Short-hand version */
+    /* 
+        animation-delay: 3s;
+        animation-iteration-count: 3; How many times the animation will be repeated
+        */ }
+  .heading-primary--sub {
+    display: block;
+    /* Block, so the element can take the full width of the viewport. */
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
+    /* Animation */
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
 
 @keyframes moveInLeft {
   0% {
@@ -120,8 +115,7 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 
-.btn:link,
-.btn:visited {
+.btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
@@ -138,6 +132,9 @@ body {
   transform: translateY(-0.3rem);
   /* The button will move up on mouse hover. */
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
 
 .btn:active {
   /* On click */
@@ -147,6 +144,9 @@ body {
 .btn--white {
   background-color: #fff;
   color: #777; }
+  .btn--white::after {
+    background-color: #fff;
+    /* background-color: #f00; */ }
 
 .btn::after {
   /* Represents a styleable child pseudo-element immediately after the originating element’s actual content. */
@@ -159,20 +159,12 @@ body {
   width: 100%;
   border-radius: 10rem;
   position: absolute;
-  /* Looks for the reference positioning of the button ".btn". */
+  /* Looks for the reference positioning of the button "&". */
   top: 0;
   left: 0;
   z-index: -1;
   /* For a positioned box, the 'z-index' property specifies the stack level of the box in the current stacking context and whether the box establishes a local stacking context. */
   transition: all .4s; }
-
-.btn--white::after {
-  background-color: #fff;
-  /* background-color: #f00; */ }
-
-.btn--white:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
 
 .btn--animated {
   /* Animation */

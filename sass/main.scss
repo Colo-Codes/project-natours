@@ -4,6 +4,7 @@ $color-primary-light: #55c57a;
 $color-primary-dark: #28b485;
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 /* Initial reset */
 *,
@@ -32,31 +33,31 @@ body { /* All the modifications related to fonts that shouls apply globally shou
     height: 95vh; /* At any point, the height of this element should be 95% of the viewport (the browser window size) */
     background-image:  linear-gradient(
         to right bottom,
-        rgba($color-primary-light, .70),
+        rgba($color-primary-light, .70), // This definition methos only works with Sass.
         rgba($color-primary-dark, .70)), 
         url(../img/hero.jpg);
     background-size: cover;
     background-position: top; /* This ensures the top of the image will remain at the top of the viewport. */
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     position: relative;
-}
 
-.header__logo-box {
-    position: absolute; /* Absolute makes reference to the ancestor, and will start counting pixels from there. */
-    top: 4rem; /* This wil start to count from the parent element which has a position equal to "relative". */
-    left: 4rem;
-}
+    &__logo-box {
+        position: absolute; /* Absolute makes reference to the ancestor, and will start counting pixels from there. */
+        top: 4rem; /* This wil start to count from the parent element which has a position equal to "relative". */
+        left: 4rem;
+    }
 
-.header__logo {
-    height: 3.5rem;
-}
-
-.header__text-box {
-    position: absolute;
-    top: 40%; /* This is in relation to the parent element. */
-    left: 50%; /* This is in relation to the parent element. */
-    transform: translate(-50%, -50%); /* This is in relation to the element irself, not to the parent element, thanks to the transform. */
-    text-align: center; /* This will apply to the button. As the button is an inline element, it's treated as is where text, hence we can use this property. */
+    &__logo {
+        height: 3.5rem;
+    }
+    
+    &__text-box {
+        position: absolute;
+        top: 40%; /* This is in relation to the parent element. */
+        left: 50%; /* This is in relation to the parent element. */
+        transform: translate(-50%, -50%); /* This is in relation to the element irself, not to the parent element, thanks to the transform. */
+        text-align: center; /* This will apply to the button. As the button is an inline element, it's treated as is where text, hence we can use this property. */
+    }
 }
 
 .heading-primary {
@@ -65,32 +66,34 @@ body { /* All the modifications related to fonts that shouls apply globally shou
     /* Animation related */
     backface-visibility: hidden; /* To prevent the element from moving vertically on animations (this happens sometimes). */
     margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-    display: block; /* Block, so the element can take the full width of the viewport. */
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    /* Animation */
-    animation: moveInLeft 1s ease-out; /* Short-hand version */
+    &--main {
+        display: block; /* Block, so the element can take the full width of the viewport. */
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        /* Animation */
+        animation: moveInLeft 1s ease-out; /* Short-hand version */
+        
+        /* 
+        animation-delay: 3s;
+        animation-iteration-count: 3; How many times the animation will be repeated
+        */
+    }
     
-    /* 
-    animation-delay: 3s;
-    animation-iteration-count: 3; How many times the animation will be repeated
-    */
+    &--sub {
+        display: block; /* Block, so the element can take the full width of the viewport. */
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.74rem;
+        /* Animation */
+        animation-name: moveInRight;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+    }
 }
 
-.heading-primary--sub {
-    display: block; /* Block, so the element can take the full width of the viewport. */
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.74rem;
-    /* Animation */
-    animation-name: moveInRight;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-}
+
 
 @keyframes moveInLeft {
     0% { /* Start */
@@ -131,58 +134,60 @@ body { /* All the modifications related to fonts that shouls apply globally shou
     }
 }
 
-.btn:link,
-.btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block; /* This is in order the padding to work properly. */
-    border-radius: 10rem;
-    transition: all .2s; /* Defines the transition between two states of an element. */
-    position: relative; /* In order for the "absolute" positioning of the ".btn::after" to work. */
-    font-size: 1.6rem;
-}
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block; /* This is in order the padding to work properly. */
+        border-radius: 10rem;
+        transition: all .2s; /* Defines the transition between two states of an element. */
+        position: relative; /* In order for the "absolute" positioning of the ".btn::after" to work. */
+        font-size: 1.6rem;
+    }
 
-.btn:hover {
-    transform: translateY(-.3rem); /* The button will move up on mouse hover. */
-    box-shadow: 0 1rem 2rem rgba(0,0,0,.5);
-}
+    &:hover {
+        transform: translateY(-.3rem); /* The button will move up on mouse hover. */
+        box-shadow: 0 1rem 2rem rgba($color-black,.5);
 
-.btn:active { /* On click */
-    transform: translateY(-.1rem);
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.5);
-}
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
 
-.btn--white {
-    background-color: $color-white;
-    color: $color-grey-dark;
-}
+    &:active { /* On click */
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.5);
+    }
 
-.btn::after { /* Represents a styleable child pseudo-element immediately after the originating element’s actual content. */
-    content: ""; /* Needed for the element to be displayed. */
-    display: inline-block; /* Needed for the element to be displayed. */
-    height: 100%; /* This is a child of the button that has 100% height, so it matches its parent's height: the button. */
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute; /* Looks for the reference positioning of the button ".btn". */
-    top: 0;
-    left: 0;
-    z-index: -1; /* For a positioned box, the 'z-index' property specifies the stack level of the box in the current stacking context and whether the box establishes a local stacking context. */
-    transition: all .4s;
-}
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
 
-.btn--white::after {
-    background-color: $color-white;
-    /* background-color: #f00; */
-}
+        &::after {
+            background-color: $color-white;
+            /* background-color: #f00; */
+        }
+    }
 
-.btn--white:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
+    &::after { /* Represents a styleable child pseudo-element immediately after the originating element’s actual content. */
+        content: ""; /* Needed for the element to be displayed. */
+        display: inline-block; /* Needed for the element to be displayed. */
+        height: 100%; /* This is a child of the button that has 100% height, so it matches its parent's height: the button. */
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute; /* Looks for the reference positioning of the button "&". */
+        top: 0;
+        left: 0;
+        z-index: -1; /* For a positioned box, the 'z-index' property specifies the stack level of the box in the current stacking context and whether the box establishes a local stacking context. */
+        transition: all .4s;
+    }
 
-.btn--animated {
-    /* Animation */
-    animation: moveInBottom .5s ease-out .75s; /* The last value is the delay. */
-    animation-fill-mode: backwards;
+    &--animated {
+        /* Animation */
+        animation: moveInBottom .5s ease-out .75s; /* The last value is the delay. */
+        animation-fill-mode: backwards;
+    }
 }
