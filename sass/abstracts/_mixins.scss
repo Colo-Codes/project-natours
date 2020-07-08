@@ -1,0 +1,7 @@
+@mixin clearfix { // This prevents an element from collapsing to 0 height when all its child elements are floating. 
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

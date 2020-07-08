@@ -1,0 +1,82 @@
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block; /* This is in order the padding to work properly. */
+        border-radius: 10rem;
+        transition: all .2s; /* Defines the transition between two states of an element. */
+        position: relative; /* In order for the "absolute" positioning of the ".btn::after" to work. */
+        font-size: $default-font-size;
+    }
+
+    &:hover {
+        transform: translateY(-.3rem); /* The button will move up on mouse hover. */
+        box-shadow: 0 1rem 2rem rgba($color-black,.5);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active { /* On click */
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.5);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+            /* background-color: #f00; */
+        }
+    }
+
+    &::after { /* Represents a styleable child pseudo-element immediately after the originating element’s actual content. */
+        content: ""; /* Needed for the element to be displayed. */
+        display: inline-block; /* Needed for the element to be displayed. */
+        height: 100%; /* This is a child of the button that has 100% height, so it matches its parent's height: the button. */
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute; /* Looks for the reference positioning of the button "&". */
+        top: 0;
+        left: 0;
+        z-index: -1; /* For a positioned box, the 'z-index' property specifies the stack level of the box in the current stacking context and whether the box establishes a local stacking context. */
+        transition: all .4s;
+    }
+
+    &--animated {
+        /* Animation */
+        animation: moveInBottom .5s ease-out .75s; /* The last value is the delay. */
+        animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        padding: 3px;
+        border-bottom: 1px solid $color-primary;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 2rem rgba($color-black, .15);
+        transform: translateY(0px);
+    }
+}

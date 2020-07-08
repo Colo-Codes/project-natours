@@ -1,0 +1,16 @@
+/* Initial reset */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* box-sizing is not inheritable, but we make it so. */
+}
+
+html {
+    font-size: 62.5%; /* Root font size, so 62.5% of the default font size (usually 16px) = 10px = 1rem. */
+}
+
+body {
+    box-sizing: border-box;
+}
