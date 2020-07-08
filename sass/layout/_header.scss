@@ -7,6 +7,7 @@
         url(../img/hero.jpg);
     background-size: cover;
     background-position: top; /* This ensures the top of the image will remain at the top of the viewport. */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); // For compatibility.
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     position: relative;
 

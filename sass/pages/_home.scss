@@ -15,9 +15,15 @@
 
     /* Section skew */
     transform: skewY(-7deg);
-    margin-top: -10rem;
+    margin-top: -12rem;
 
     & > * { // Selecting all the direct children of .section-feature (e.g. the row with the white boxes, excluding the boxes themselves and text (that are children of the boxes)).
         transform: skewY(7deg);
     }
+}
+
+.section-tours {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0 50rem 0;
+    margin-top: -12rem;
 }

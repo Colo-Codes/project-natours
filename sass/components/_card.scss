@@ -1,0 +1,113 @@
+.card {
+    perspective: 150rem; // To improve the animation effect.
+    -moz-perspective: 150rem; // Firefox compatibility.
+    position: relative; // In order to make the "position: absolute" to work.
+    height: 50rem; // To prevent the parent from collapsing and removing the perspective effect.
+
+    &__side {
+        height: 50rem;
+        transition: all .8s ease; // To make a smooth animation.
+        position: absolute; // The front will be on top of the back.
+        top: 0;
+        left: 0;
+        width: 100%;
+        backface-visibility: hidden; // Hides the back part of the element.
+        border-radius: 3px;
+        overflow: hidden; // To prevent the image from overriding the border-radius.
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        &--front {
+            background-color: $color-white;
+        }
+
+        &--back {
+            transform: rotateY(180deg);
+
+            &--1 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+
+            &--2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &--3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg); // The animation itself.
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0deg); // The animation itself.
+    }
+
+    // --------- Front side styling --------- (start)
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // For compatibility
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: url(../img/nat-6.jpg);
+        }
+
+        &--3 {
+            background-image: url(../img/nat-7.jpg);
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem .5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone; // So the two lines of text are treated as boxes and are aligned to the right properly.
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto; // To center the list.
+            
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
+    }
+    // --------- Front side styling --------- (end)
+}
+
