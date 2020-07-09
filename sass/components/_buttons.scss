@@ -36,6 +36,16 @@
         }
     }
 
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+            /* background-color: #f00; */
+        }
+    }
+
     &::after { /* Represents a styleable child pseudo-element immediately after the originating element’s actual content. */
         content: ""; /* Needed for the element to be displayed. */
         display: inline-block; /* Needed for the element to be displayed. */
