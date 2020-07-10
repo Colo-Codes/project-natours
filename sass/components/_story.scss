@@ -1,0 +1,68 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .3);
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    & > * {
+        transform: skewX(12deg);
+    }
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        position: relative;
+
+        -webkit-shape-outside: circle(50% at 50% 50%); // Compatibility mode.
+        shape-outside: circle(50% at 50% 50%); // The text will wrap around a circle. This will work if the element is floated and if it has dimentions (width and height).
+
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%); // This cuts the shape in a circle.
+
+        transform: translateX(-3rem) skewX(12deg);
+    }
+
+    &__img {
+        height: 100%; // Is the 100% of the parent, e.g. 15rem.
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .5s;
+    }
+
+    &__text {
+        transform: skewX(12deg);
+    }
+
+    &__caption {
+        text-align: center;
+        text-transform: uppercase;
+        color: $color-white;
+        font-size: 1.7rem;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transition: all .5s;
+        backface-visibility: hidden; // To fix the glitch of the animation at the end (just in case).
+
+        /* Initial state */
+        transform: translate(-50%, 20%);
+        opacity: 0;
+    }
+
+    &:hover &__caption {
+        transform: translate(-50%, -50%); // Centered on Y.
+        opacity: 1;
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+}
