@@ -33,3 +33,29 @@
     padding: 15rem 0;
     /*background-color: $color-grey-light-1;*/
 }
+
+.section-book {
+    padding: 15rem 0;
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+.book { // The booking section of the home page.
+    // Using "background-image > linear-gradient" as a technique to generate a white poligon over the image.
+    background-image: linear-gradient(
+        105deg, 
+        rgba($color-white, .9) 0%, 
+        rgba($color-white, .9) 50%, 
+        transparent 50%), 
+        url(../img/nat-10.jpg);
+    background-size: cover;
+    border-radius: 3px;
+    box-shadow: 0 3rem 6rem rgba($color-black, .5);
+
+    height: 50rem; // For testing purposes.
+
+    &__form {
+        width: 50%;
+        padding: 6rem;
+        
+    }
+}
